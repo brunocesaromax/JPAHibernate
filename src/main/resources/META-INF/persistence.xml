@@ -5,6 +5,7 @@
         <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
 
         <class>model.Usuario</class>
+        <class>model.Telefone</class>
 
         <properties>
             <!--dados de conexão com o banco-->

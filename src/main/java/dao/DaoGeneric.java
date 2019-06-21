@@ -61,4 +61,8 @@ public class DaoGeneric<E> {
         return list;
     }
 
+    /*Podemos utilizar o entityManager em outras partes do projeto, para criar consultas específicas*/
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }

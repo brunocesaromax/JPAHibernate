@@ -1,11 +1,13 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Usuario.findAll", query = "SELECT obj FROM Usuario obj"),
+        @NamedQuery(name = "Usuario.findByNome", query = "SELECT obj FROM Usuario obj WHERE obj.nome = :nome")
+})
 public class Usuario {
 
     @Id
@@ -16,6 +18,9 @@ public class Usuario {
     private String email;
     private String senha;
     private int idade;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Telefone> telefones;
 
     public Long getId() {
         return id;
@@ -55,6 +60,14 @@ public class Usuario {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
     @Override
